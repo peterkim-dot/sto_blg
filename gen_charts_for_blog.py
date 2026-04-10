@@ -5,7 +5,14 @@ from datetime import datetime, timedelta
 from pykrx import stock
 from utils.chart_generator import generate_analysis_chart
 
-OUT_DIR = "output/20260410/charts"
+# 거래일은 market_data.json에서 가져옴 (없으면 오늘)
+import json
+try:
+    with open("market_data.json", "r", encoding="utf-8") as f:
+        trade_date = json.load(f)["trade_date"].replace("-", "")
+except:
+    trade_date = datetime.now().strftime("%Y%m%d")
+OUT_DIR = f"output/{trade_date}/charts"
 os.makedirs(OUT_DIR, exist_ok=True)
 
 # 분석 대상: 핵심 종목 5개
@@ -17,8 +24,8 @@ TARGETS = [
     ("373220", "LG에너지솔루션"),
 ]
 
-# 120일 데이터
-end = datetime(2026, 4, 10)
+# 180일 데이터 (오늘 기준)
+end = datetime.now()
 start = end - timedelta(days=180)
 start_s = start.strftime("%Y%m%d")
 end_s = end.strftime("%Y%m%d")

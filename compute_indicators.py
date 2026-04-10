@@ -13,7 +13,7 @@ TARGETS = [
     ("373220", "LG에너지솔루션"),
 ]
 
-end = datetime(2026, 4, 10)
+end = datetime.now()
 start = end - timedelta(days=180)
 result = {}
 

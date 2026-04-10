@@ -38,8 +38,10 @@ TICKERS = {
     "011200": "HMM",
 }
 
-start = "20260301"
-end = "20260411"
+end_dt = datetime.now()
+start_dt = end_dt - timedelta(days=60)
+start = start_dt.strftime("%Y%m%d")
+end = end_dt.strftime("%Y%m%d")
 
 results = []
 for ticker, name in TICKERS.items():

@@ -10,14 +10,24 @@ from matplotlib.patches import FancyArrowPatch
 from datetime import datetime
 import config
 
-# Windows 한글 폰트 설정
+# 한글 폰트 설정 (Windows + Linux 호환)
 _KR_FONT = None
-_malgun_path = "C:/Windows/Fonts/malgun.ttf"
-if os.path.exists(_malgun_path):
-    fm.fontManager.addfont(_malgun_path)
-    _KR_FONT = "Malgun Gothic"
-    plt.rcParams["font.family"] = _KR_FONT
-    plt.rcParams["axes.unicode_minus"] = False
+_font_candidates = [
+    ("C:/Windows/Fonts/malgun.ttf", "Malgun Gothic"),
+    ("/usr/share/fonts/truetype/nanum/NanumGothic.ttf", "NanumGothic"),
+    ("/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc", "Noto Sans CJK KR"),
+    ("/usr/share/fonts/truetype/noto/NotoSansCJK-Regular.ttc", "Noto Sans CJK KR"),
+]
+for _path, _name in _font_candidates:
+    if os.path.exists(_path):
+        try:
+            fm.fontManager.addfont(_path)
+            _KR_FONT = _name
+            plt.rcParams["font.family"] = _KR_FONT
+            plt.rcParams["axes.unicode_minus"] = False
+            break
+        except Exception:
+            continue
 
 
 def _find_support_resistance(highs, lows, closes, n_levels=3):
