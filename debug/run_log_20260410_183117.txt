@@ -1,0 +1,358 @@
+==> 환경 정보
+/usr/local/bin/python
+Python 3.11.15
+/usr/bin/pip
+PY=/usr/local/bin/python
+
+==> 1/4 의존성 설치 (실패 시 즉시 중단)
+Requirement already satisfied: pip in /usr/lib/python3/dist-packages (24.0)
+Collecting pip
+  Downloading pip-26.0.1-py3-none-any.whl.metadata (4.7 kB)
+Downloading pip-26.0.1-py3-none-any.whl (1.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 63.4 MB/s eta 0:00:00
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 24.0
+ERROR: Cannot uninstall pip 24.0, RECORD file not found. Hint: The package was installed by debian.
+(pip upgrade 스킵)
+Collecting yfinance
+  Downloading yfinance-1.2.1-py2.py3-none-any.whl.metadata (6.1 kB)
+Collecting mplfinance
+  Downloading mplfinance-0.12.10b0-py3-none-any.whl.metadata (19 kB)
+Collecting pandas
+  Downloading pandas-3.0.2-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (79 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 79.5/79.5 kB 6.8 MB/s eta 0:00:00
+Collecting numpy
+  Downloading numpy-2.4.4-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+Requirement already satisfied: requests>=2.31 in /root/.local/lib/python3.11/site-packages (from yfinance) (2.33.1)
+Collecting multitasking>=0.0.7 (from yfinance)
+  Downloading multitasking-0.0.12.tar.gz (19 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting platformdirs>=2.0.0 (from yfinance)
+  Downloading platformdirs-4.9.6-py3-none-any.whl.metadata (4.7 kB)
+Collecting pytz>=2022.5 (from yfinance)
+  Downloading pytz-2026.1.post1-py2.py3-none-any.whl.metadata (22 kB)
+Collecting frozendict>=2.3.4 (from yfinance)
+  Downloading frozendict-2.4.7-py3-none-any.whl.metadata (23 kB)
+Collecting peewee>=3.16.2 (from yfinance)
+  Downloading peewee-4.0.4-py3-none-any.whl.metadata (8.6 kB)
+Collecting beautifulsoup4>=4.11.1 (from yfinance)
+  Downloading beautifulsoup4-4.14.3-py3-none-any.whl.metadata (3.8 kB)
+Collecting curl_cffi>=0.15 (from yfinance)
+  Downloading curl_cffi-0.15.0-cp310-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (18 kB)
+Collecting protobuf>=3.19.0 (from yfinance)
+  Downloading protobuf-7.34.1-cp310-abi3-manylinux2014_x86_64.whl.metadata (595 bytes)
+Collecting websockets>=13.0 (from yfinance)
+  Downloading websockets-16.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (6.8 kB)
+Collecting matplotlib (from mplfinance)
+  Downloading matplotlib-3.10.8-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (52 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 52.8/52.8 kB 4.4 MB/s eta 0:00:00
+Requirement already satisfied: python-dateutil>=2.8.2 in /root/.local/lib/python3.11/site-packages (from pandas) (2.9.0.post0)
+Collecting soupsieve>=1.6.1 (from beautifulsoup4>=4.11.1->yfinance)
+  Downloading soupsieve-2.8.3-py3-none-any.whl.metadata (4.6 kB)
+Collecting typing-extensions>=4.0.0 (from beautifulsoup4>=4.11.1->yfinance)
+  Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting cffi>=2.0.0 (from curl_cffi>=0.15->yfinance)
+  Downloading cffi-2.0.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.6 kB)
+Requirement already satisfied: certifi>=2024.2.2 in /root/.local/lib/python3.11/site-packages (from curl_cffi>=0.15->yfinance) (2026.2.25)
+Collecting rich (from curl_cffi>=0.15->yfinance)
+  Downloading rich-14.3.3-py3-none-any.whl.metadata (18 kB)
+Requirement already satisfied: six>=1.5 in /usr/lib/python3/dist-packages (from python-dateutil>=2.8.2->pandas) (1.16.0)
+Requirement already satisfied: charset_normalizer<4,>=2 in /root/.local/lib/python3.11/site-packages (from requests>=2.31->yfinance) (3.4.6)
+Requirement already satisfied: idna<4,>=2.5 in /root/.local/lib/python3.11/site-packages (from requests>=2.31->yfinance) (3.11)
+Requirement already satisfied: urllib3<3,>=1.26 in /root/.local/lib/python3.11/site-packages (from requests>=2.31->yfinance) (2.6.3)
+Collecting contourpy>=1.0.1 (from matplotlib->mplfinance)
+  Downloading contourpy-1.3.3-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (5.5 kB)
+Collecting cycler>=0.10 (from matplotlib->mplfinance)
+  Downloading cycler-0.12.1-py3-none-any.whl.metadata (3.8 kB)
+Collecting fonttools>=4.22.0 (from matplotlib->mplfinance)
+  Downloading fonttools-4.62.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (117 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 117.5/117.5 kB 9.3 MB/s eta 0:00:00
+Collecting kiwisolver>=1.3.1 (from matplotlib->mplfinance)
+  Downloading kiwisolver-1.5.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (5.1 kB)
+Requirement already satisfied: packaging>=20.0 in /usr/lib/python3/dist-packages (from matplotlib->mplfinance) (24.0)
+Collecting pillow>=8 (from matplotlib->mplfinance)
+  Downloading pillow-12.2.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (8.8 kB)
+Requirement already satisfied: pyparsing>=3 in /usr/lib/python3/dist-packages (from matplotlib->mplfinance) (3.1.1)
+Collecting pycparser (from cffi>=2.0.0->curl_cffi>=0.15->yfinance)
+  Downloading pycparser-3.0-py3-none-any.whl.metadata (8.2 kB)
+Collecting markdown-it-py>=2.2.0 (from rich->curl_cffi>=0.15->yfinance)
+  Downloading markdown_it_py-4.0.0-py3-none-any.whl.metadata (7.3 kB)
+Collecting pygments<3.0.0,>=2.13.0 (from rich->curl_cffi>=0.15->yfinance)
+  Downloading pygments-2.20.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich->curl_cffi>=0.15->yfinance)
+  Downloading mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+Downloading yfinance-1.2.1-py2.py3-none-any.whl (130 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 130.2/130.2 kB 12.1 MB/s eta 0:00:00
+Downloading mplfinance-0.12.10b0-py3-none-any.whl (75 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 75.0/75.0 kB 7.0 MB/s eta 0:00:00
+Downloading pandas-3.0.2-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (11.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11.3/11.3 MB 91.2 MB/s eta 0:00:00
+Downloading numpy-2.4.4-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.9/16.9 MB 82.3 MB/s eta 0:00:00
+Downloading beautifulsoup4-4.14.3-py3-none-any.whl (107 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 107.7/107.7 kB 8.9 MB/s eta 0:00:00
+Downloading curl_cffi-0.15.0-cp310-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (11.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11.1/11.1 MB 91.3 MB/s eta 0:00:00
+Downloading frozendict-2.4.7-py3-none-any.whl (16 kB)
+Downloading peewee-4.0.4-py3-none-any.whl (144 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 144.5/144.5 kB 14.3 MB/s eta 0:00:00
+Downloading platformdirs-4.9.6-py3-none-any.whl (21 kB)
+Downloading protobuf-7.34.1-cp310-abi3-manylinux2014_x86_64.whl (324 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 324.3/324.3 kB 25.2 MB/s eta 0:00:00
+Downloading pytz-2026.1.post1-py2.py3-none-any.whl (510 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 510.5/510.5 kB 40.1 MB/s eta 0:00:00
+Downloading websockets-16.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (184 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 184.6/184.6 kB 18.9 MB/s eta 0:00:00
+Downloading matplotlib-3.10.8-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (8.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.7/8.7 MB 96.7 MB/s eta 0:00:00
+Downloading cffi-2.0.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (215 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 215.6/215.6 kB 19.5 MB/s eta 0:00:00
+Downloading contourpy-1.3.3-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (355 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 355.2/355.2 kB 28.8 MB/s eta 0:00:00
+Downloading cycler-0.12.1-py3-none-any.whl (8.3 kB)
+Downloading fonttools-4.62.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (5.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.1/5.1 MB 87.7 MB/s eta 0:00:00
+Downloading kiwisolver-1.5.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (1.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.4/1.4 MB 60.2 MB/s eta 0:00:00
+Downloading pillow-12.2.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (7.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.1/7.1 MB 83.7 MB/s eta 0:00:00
+Downloading soupsieve-2.8.3-py3-none-any.whl (37 kB)
+Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 44.6/44.6 kB 4.2 MB/s eta 0:00:00
+Downloading rich-14.3.3-py3-none-any.whl (310 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 310.5/310.5 kB 24.9 MB/s eta 0:00:00
+Downloading markdown_it_py-4.0.0-py3-none-any.whl (87 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 87.3/87.3 kB 7.5 MB/s eta 0:00:00
+Downloading pygments-2.20.0-py3-none-any.whl (1.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 66.5 MB/s eta 0:00:00
+Downloading pycparser-3.0-py3-none-any.whl (48 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 48.2/48.2 kB 3.8 MB/s eta 0:00:00
+Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+Building wheels for collected packages: multitasking
+  Building wheel for multitasking (setup.py): started
+  Building wheel for multitasking (setup.py): finished with status 'error'
+  error: subprocess-exited-with-error
+  
+  × python setup.py bdist_wheel did not run successfully.
+  │ exit code: 1
+  ╰─> [71 lines of output]
+      running bdist_wheel
+      running build
+      running build_py
+      creating build
+      creating build/lib
+      creating build/lib/multitasking
+      copying multitasking/__init__.py -> build/lib/multitasking
+      /usr/lib/python3/dist-packages/setuptools/_distutils/cmd.py:66: SetuptoolsDeprecationWarning: setup.py install is deprecated.
+      !!
+      
+              ********************************************************************************
+              Please avoid running ``setup.py`` directly.
+              Instead, use pypa/build, pypa/installer or other
+              standards-based tools.
+      
+              See https://blog.ganssle.io/articles/2021/10/setup-py-deprecated.html for details.
+              ********************************************************************************
+      
+      !!
+        self.initialize_options()
+      installing to build/bdist.linux-x86_64/wheel
+      running install
+      running install_lib
+      Traceback (most recent call last):
+        File "<string>", line 2, in <module>
+        File "<pip-setuptools-caller>", line 34, in <module>
+        File "/tmp/pip-install-64ntsofc/multitasking_fe870cee3461413391bad87739f3f207/setup.py", line 18, in <module>
+          setup(
+        File "/usr/lib/python3/dist-packages/setuptools/__init__.py", line 107, in setup
+          return distutils.core.setup(**attrs)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "/usr/lib/python3/dist-packages/setuptools/_distutils/core.py", line 185, in setup
+          return run_commands(dist)
+                 ^^^^^^^^^^^^^^^^^^
+        File "/usr/lib/python3/dist-packages/setuptools/_distutils/core.py", line 201, in run_commands
+          dist.run_commands()
+        File "/usr/lib/python3/dist-packages/setuptools/_distutils/dist.py", line 969, in run_commands
+          self.run_command(cmd)
+        File "/usr/lib/python3/dist-packages/setuptools/dist.py", line 1233, in run_command
+          super().run_command(command)
+        File "/usr/lib/python3/dist-packages/setuptools/_distutils/dist.py", line 988, in run_command
+          cmd_obj.run()
+        File "/usr/lib/python3/dist-packages/wheel/bdist_wheel.py", line 403, in run
+          self.run_command("install")
+        File "/usr/lib/python3/dist-packages/setuptools/_distutils/cmd.py", line 318, in run_command
+          self.distribution.run_command(command)
+        File "/usr/lib/python3/dist-packages/setuptools/dist.py", line 1233, in run_command
+          super().run_command(command)
+        File "/usr/lib/python3/dist-packages/setuptools/_distutils/dist.py", line 988, in run_command
+          cmd_obj.run()
+        File "/usr/lib/python3/dist-packages/setuptools/command/install.py", line 78, in run
+          return orig.install.run(self)
+                 ^^^^^^^^^^^^^^^^^^^^^^
+        File "/usr/lib/python3/dist-packages/setuptools/_distutils/command/install.py", line 708, in run
+          self.run_command(cmd_name)
+        File "/usr/lib/python3/dist-packages/setuptools/_distutils/cmd.py", line 318, in run_command
+          self.distribution.run_command(command)
+        File "/usr/lib/python3/dist-packages/setuptools/dist.py", line 1233, in run_command
+          super().run_command(command)
+        File "/usr/lib/python3/dist-packages/setuptools/_distutils/dist.py", line 987, in run_command
+          cmd_obj.ensure_finalized()
+        File "/usr/lib/python3/dist-packages/setuptools/_distutils/cmd.py", line 111, in ensure_finalized
+          self.finalize_options()
+        File "/usr/lib/python3/dist-packages/setuptools/command/install_lib.py", line 17, in finalize_options
+          self.set_undefined_options('install',('install_layout','install_layout'))
+        File "/usr/lib/python3/dist-packages/setuptools/_distutils/cmd.py", line 296, in set_undefined_options
+          setattr(self, dst_option, getattr(src_cmd_obj, src_option))
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "/usr/lib/python3/dist-packages/setuptools/_distutils/cmd.py", line 107, in __getattr__
+          raise AttributeError(attr)
+      AttributeError: install_layout. Did you mean: 'install_platlib'?
+      [end of output]
+  
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+  ERROR: Failed building wheel for multitasking
+  Running setup.py clean for multitasking
+Failed to build multitasking
+ERROR: Could not build wheels for multitasking, which is required to install pyproject.toml-based projects
+🔍 환경 진단
+  - 현재 시각(now): 2026-04-10 18:31:06.553965
+  - 조회 범위: 20260110 ~ 20260410
+  - yfinance 버전: 1.2.1
+
+🧪 네트워크 사전 점검: 삼성전자(005930) 조회
+Failed to get ticker '005930.KS' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+Failed to get ticker '005930.KQ' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+  → 행 수: 0
+  ⚠️ 데이터프레임이 비어있음 - KRX 응답 이상
+
+📥 종목별 수집 시작
+Failed to get ticker '005930.KS' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$005930.KS: possibly delisted; no timezone found
+Failed to get ticker '005930.KQ' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$005930.KQ: possibly delisted; no timezone found
+Failed to get ticker '000660.KS' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$000660.KS: possibly delisted; no timezone found
+Failed to get ticker '000660.KQ' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$000660.KQ: possibly delisted; no timezone found
+Failed to get ticker '207940.KS' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$207940.KS: possibly delisted; no timezone found
+Failed to get ticker '207940.KQ' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$207940.KQ: possibly delisted; no timezone found
+Failed to get ticker '373220.KS' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$373220.KS: possibly delisted; no timezone found
+Failed to get ticker '373220.KQ' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$373220.KQ: possibly delisted; no timezone found
+Failed to get ticker '005380.KS' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$005380.KS: possibly delisted; no timezone found
+Failed to get ticker '005380.KQ' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$005380.KQ: possibly delisted; no timezone found
+Failed to get ticker '005935.KS' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$005935.KS: possibly delisted; no timezone found
+Failed to get ticker '005935.KQ' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$005935.KQ: possibly delisted; no timezone found
+Failed to get ticker '012450.KS' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$012450.KS: possibly delisted; no timezone found
+Failed to get ticker '012450.KQ' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$012450.KQ: possibly delisted; no timezone found
+Failed to get ticker '068270.KS' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$068270.KS: possibly delisted; no timezone found
+Failed to get ticker '068270.KQ' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$068270.KQ: possibly delisted; no timezone found
+Failed to get ticker '035420.KS' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$035420.KS: possibly delisted; no timezone found
+Failed to get ticker '035420.KQ' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$035420.KQ: possibly delisted; no timezone found
+Failed to get ticker '035720.KS' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$035720.KS: possibly delisted; no timezone found
+Failed to get ticker '035720.KQ' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$035720.KQ: possibly delisted; no timezone found
+Failed to get ticker '000270.KS' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$000270.KS: possibly delisted; no timezone found
+Failed to get ticker '000270.KQ' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$000270.KQ: possibly delisted; no timezone found
+Failed to get ticker '105560.KS' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$105560.KS: possibly delisted; no timezone found
+Failed to get ticker '105560.KQ' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$105560.KQ: possibly delisted; no timezone found
+Failed to get ticker '055550.KS' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$055550.KS: possibly delisted; no timezone found
+Failed to get ticker '055550.KQ' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$055550.KQ: possibly delisted; no timezone found
+Failed to get ticker '032830.KS' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$032830.KS: possibly delisted; no timezone found
+Failed to get ticker '032830.KQ' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$032830.KQ: possibly delisted; no timezone found
+Failed to get ticker '066570.KS' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$066570.KS: possibly delisted; no timezone found
+Failed to get ticker '066570.KQ' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$066570.KQ: possibly delisted; no timezone found
+Failed to get ticker '003670.KS' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$003670.KS: possibly delisted; no timezone found
+Failed to get ticker '003670.KQ' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$003670.KQ: possibly delisted; no timezone found
+Failed to get ticker '005490.KS' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$005490.KS: possibly delisted; no timezone found
+Failed to get ticker '005490.KQ' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$005490.KQ: possibly delisted; no timezone found
+Failed to get ticker '247540.KS' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$247540.KS: possibly delisted; no timezone found
+Failed to get ticker '247540.KQ' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$247540.KQ: possibly delisted; no timezone found
+Failed to get ticker '086520.KS' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$086520.KS: possibly delisted; no timezone found
+Failed to get ticker '086520.KQ' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$086520.KQ: possibly delisted; no timezone found
+Failed to get ticker '042700.KS' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$042700.KS: possibly delisted; no timezone found
+Failed to get ticker '042700.KQ' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$042700.KQ: possibly delisted; no timezone found
+Failed to get ticker '196170.KS' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$196170.KS: possibly delisted; no timezone found
+Failed to get ticker '196170.KQ' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$196170.KQ: possibly delisted; no timezone found
+Failed to get ticker '028260.KS' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$028260.KS: possibly delisted; no timezone found
+Failed to get ticker '028260.KQ' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$028260.KQ: possibly delisted; no timezone found
+Failed to get ticker '015760.KS' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$015760.KS: possibly delisted; no timezone found
+Failed to get ticker '015760.KQ' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$015760.KQ: possibly delisted; no timezone found
+Failed to get ticker '017670.KS' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$017670.KS: possibly delisted; no timezone found
+Failed to get ticker '017670.KQ' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$017670.KQ: possibly delisted; no timezone found
+Failed to get ticker '030200.KS' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$030200.KS: possibly delisted; no timezone found
+Failed to get ticker '030200.KQ' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$030200.KQ: possibly delisted; no timezone found
+Failed to get ticker '009150.KS' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$009150.KS: possibly delisted; no timezone found
+Failed to get ticker '009150.KQ' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$009150.KQ: possibly delisted; no timezone found
+Failed to get ticker '010130.KS' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$010130.KS: possibly delisted; no timezone found
+Failed to get ticker '010130.KQ' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$010130.KQ: possibly delisted; no timezone found
+Failed to get ticker '034730.KS' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$034730.KS: possibly delisted; no timezone found
+Failed to get ticker '034730.KQ' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$034730.KQ: possibly delisted; no timezone found
+Failed to get ticker '018260.KS' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$018260.KS: possibly delisted; no timezone found
+Failed to get ticker '018260.KQ' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$018260.KQ: possibly delisted; no timezone found
+Failed to get ticker '011200.KS' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$011200.KS: possibly delisted; no timezone found
+Failed to get ticker '011200.KQ' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+$011200.KQ: possibly delisted; no timezone found
+
+📊 수집 결과
+  - 성공: 0개
+  - 빈 결과: 30개
+  - 예외 발생: 0개
+  ⚠️ 수집된 종목 없음 - 휴장일이거나 KRX 접근 실패
+
+✅ market_data.json 저장 완료
