@@ -39,15 +39,42 @@ TICKERS = {
 }
 
 end_dt = datetime.now()
-start_dt = end_dt - timedelta(days=60)
+start_dt = end_dt - timedelta(days=90)  # 90일로 확대 (장기 휴장 대비)
 start = start_dt.strftime("%Y%m%d")
 end = end_dt.strftime("%Y%m%d")
 
+# 진단 정보
+print(f"🔍 환경 진단")
+print(f"  - 현재 시각(now): {end_dt}")
+print(f"  - 조회 범위: {start} ~ {end}")
+try:
+    import pykrx
+    print(f"  - pykrx 버전: {getattr(pykrx, '__version__', 'unknown')}")
+except Exception as e:
+    print(f"  - pykrx 임포트 실패: {e}")
+
+# 네트워크 사전 점검 (KRX 단일 종목 1개)
+print(f"\n🧪 네트워크 사전 점검: 삼성전자(005930) 조회")
+try:
+    test_df = stock.get_market_ohlcv(start, end, "005930")
+    print(f"  → 행 수: {len(test_df)}")
+    if not test_df.empty:
+        print(f"  → 최근 거래일: {test_df.index[-1].date()}, 종가: {int(test_df.iloc[-1]['종가']):,}")
+    else:
+        print(f"  ⚠️ 데이터프레임이 비어있음 - KRX 응답 이상")
+except Exception as e:
+    print(f"  ❌ 네트워크/API 실패: {type(e).__name__}: {e}")
+    print(f"  ⚠️ 원격 환경에서 KRX 접근이 차단되었을 가능성")
+
+print(f"\n📥 종목별 수집 시작")
 results = []
+empty_count = 0
+fail_count = 0
 for ticker, name in TICKERS.items():
     try:
         df = stock.get_market_ohlcv(start, end, ticker)
         if df.empty or len(df) < 2:
+            empty_count += 1
             continue
         last = df.iloc[-1]
         prev = df.iloc[-2]
@@ -82,7 +109,8 @@ for ticker, name in TICKERS.items():
         })
         print(f"✅ {name} ({ticker}): {int(last['종가']):,} ({chg_pct:+.2f}%)")
     except Exception as e:
-        print(f"❌ {name}: {e}")
+        fail_count += 1
+        print(f"❌ {name}: {type(e).__name__}: {e}")
 
 # 정렬: 등락률 기준
 results.sort(key=lambda x: x["chg_pct"], reverse=True)
@@ -90,4 +118,12 @@ results.sort(key=lambda x: x["chg_pct"], reverse=True)
 with open("market_data.json", "w", encoding="utf-8") as f:
     json.dump({"trade_date": results[0]["date"] if results else None, "stocks": results}, f, ensure_ascii=False, indent=2)
 
-print(f"\n✅ 총 {len(results)}개 종목 수집 완료 → market_data.json")
+print(f"\n📊 수집 결과")
+print(f"  - 성공: {len(results)}개")
+print(f"  - 빈 결과: {empty_count}개")
+print(f"  - 예외 발생: {fail_count}개")
+if results:
+    print(f"  - 거래일: {results[0]['date']}")
+else:
+    print(f"  ⚠️ 수집된 종목 없음 - 휴장일이거나 KRX 접근 실패")
+print(f"\n✅ market_data.json 저장 완료")
