@@ -1,0 +1,7 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+# output/ 는 원격 트리거가 결과를 커밋해야 하므로 포함시킴
+market_data.json
+indicators.json

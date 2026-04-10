@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[4월 10일 마감 리뷰] 삼성전기 +9.5% 폭등! AI·반도체·금융주가 끌어올린 금요장</title>
+<style>
+  :root {
+    --bg: #f5f6f8;
+    --card: #ffffff;
+    --border: #e4e7ec;
+    --text: #1a1f2e;
+    --muted: #6b7280;
+    --accent: #2563eb;
+    --up: #e11d48;
+    --down: #2563eb;
+    --gold: #b45309;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Segoe UI", "Pretendard", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    margin: 0;
+    padding: 20px;
+  }
+  .container {
+    max-width: 880px;
+    margin: 0 auto;
+    background: var(--card);
+    border-radius: 16px;
+    padding: 40px 48px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    border: 1px solid var(--border);
+  }
+  h1 {
+    font-size: 28px;
+    line-height: 1.4;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+  h2 {
+    font-size: 22px;
+    margin-top: 40px;
+    padding-left: 12px;
+    border-left: 4px solid var(--accent);
+  }
+  h3 {
+    font-size: 18px;
+    margin-top: 28px;
+    color: var(--gold);
+  }
+  blockquote {
+    background: #eff6ff;
+    border-left: 4px solid var(--accent);
+    padding: 14px 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+    color: var(--text);
+  }
+  .disclaimer {
+    background: #fef2f2;
+    border-left: 4px solid var(--up);
+    padding: 12px 18px;
+    margin: 20px 0;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #7f1d1d;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 14px;
+    background: #fafbfc;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  th, td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  th {
+    background: #f1f5f9;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 13px;
+  }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .up { color: var(--up); font-weight: 600; }
+  .down { color: var(--down); font-weight: 600; }
+  .neutral { color: var(--muted); }
+  ul { padding-left: 22px; }
+  li { margin: 6px 0; }
+  code, pre {
+    background: #f1f5f9;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-family: "Cascadia Code", Consolas, monospace;
+    font-size: 13px;
+    color: #334155;
+  }
+  code { padding: 2px 6px; }
+  pre { padding: 16px 20px; overflow-x: auto; }
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    margin-left: 6px;
+  }
+  .badge-up { background: rgba(255,87,87,0.2); color: var(--up); }
+  .badge-down { background: rgba(79,158,255,0.2); color: var(--down); }
+  .meta {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+  hr { border: none; border-top: 1px solid var(--border); margin: 30px 0; }
+  strong { color: var(--gold); }
+  .star { color: var(--gold); letter-spacing: 1px; }
+  .summary-box {
+    background: linear-gradient(135deg, #eff6ff, #fffbeb);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 24px 0;
+  }
+  .chart-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+    background: #fafbfc;
+  }
+  .chart-card img {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: white;
+  }
+  .indicator-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+    margin: 14px 0;
+  }
+  .ind-item {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+  .ind-label {
+    color: var(--muted);
+    font-size: 11px;
+    display: block;
+  }
+  .ind-value {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text);
+  }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    margin: 0 2px;
+  }
+  .tag-good { background: #fee2e2; color: #b91c1c; }
+  .tag-warn { background: #fef3c7; color: #92400e; }
+  .tag-bad { background: #dbeafe; color: #1e40af; }
+  .tag-neutral { background: #f1f5f9; color: #475569; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>🔥 [4월 10일 마감 리뷰] 삼성전기 +9.5% 폭등! AI·반도체·금융주가 끌어올린 금요장</h1>
+
+<div class="disclaimer">
+⚠️ 본 글은 LLM API를 사용하지 않고, Claude(Opus 4.6)가 pykrx로 수집한 실거래 데이터(2026-04-10 기준)를 바탕으로 직접 작성했습니다.
+</div>
+
+<h2>📌 한줄 요약</h2>
+<blockquote>
+<strong>AI 부품·반도체·금융·방산이 동반 상승</strong>하며 시장을 끌어올린 하루. 반대로 <strong>2차전지(에코프로 그룹·LG엔솔)는 차익 실현 매물</strong>에 약세. 삼성전기가 <strong>+9.5%</strong> 폭등하며 단연 주목받았습니다.
+</blockquote>
+
+<h2>📊 주요 종목 등락 현황 (2026-04-10 종가 기준)</h2>
+
+<h3>🔺 오늘의 상승 TOP 10</h3>
+<table>
+<thead><tr><th>#</th><th>종목</th><th class="num">종가</th><th class="num">등락률</th><th class="num">5일</th><th class="num">20일</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><strong>삼성전기</strong></td><td class="num">565,000</td><td class="num up">+9.50%</td><td class="num up">+23.90%</td><td class="num up">+41.07%</td></tr>
+<tr><td>2</td><td>SK</td><td class="num">354,000</td><td class="num up">+4.27%</td><td class="num up">+13.28%</td><td class="num up">+6.95%</td></tr>
+<tr><td>3</td><td>한화에어로스페이스</td><td class="num">1,507,000</td><td class="num up">+3.86%</td><td class="num up">+4.00%</td><td class="num up">+1.28%</td></tr>
+<tr><td>4</td><td>HMM</td><td class="num">21,650</td><td class="num up">+3.84%</td><td class="num up">+7.98%</td><td class="num up">+2.85%</td></tr>
+<tr><td>5</td><td>고려아연</td><td class="num">1,581,000</td><td class="num up">+3.60%</td><td class="num up">+6.54%</td><td class="num down">-2.89%</td></tr>
+<tr><td>6</td><td>SK하이닉스</td><td class="num">1,027,000</td><td class="num up">+2.91%</td><td class="num up">+17.24%</td><td class="num up">+12.86%</td></tr>
+<tr><td>7</td><td>KB금융</td><td class="num">158,300</td><td class="num up">+2.66%</td><td class="num up">+8.80%</td><td class="num up">+6.31%</td></tr>
+<tr><td>8</td><td>신한지주</td><td class="num">98,700</td><td class="num up">+2.17%</td><td class="num up">+7.52%</td><td class="num up">+8.70%</td></tr>
+<tr><td>9</td><td>삼성전자우</td><td class="num">140,400</td><td class="num up">+1.96%</td><td class="num up">+12.86%</td><td class="num up">+4.85%</td></tr>
+<tr><td>10</td><td>삼성생명</td><td class="num">234,500</td><td class="num up">+1.96%</td><td class="num up">+6.11%</td><td class="num up">+8.56%</td></tr>
+</tbody>
+</table>
+
+<h3>🔻 오늘의 하락 TOP 7</h3>
+<table>
+<thead><tr><th>종목</th><th class="num">종가</th><th class="num">등락률</th><th class="num">5일</th><th class="num">20일</th></tr></thead>
+<tbody>
+<tr><td><strong>알테오젠</strong></td><td class="num">361,500</td><td class="num down">-2.30%</td><td class="num down">-1.09%</td><td class="num neutral">0.00%</td></tr>
+<tr><td><strong>에코프로비엠</strong></td><td class="num">201,500</td><td class="num down">-2.18%</td><td class="num up">+4.62%</td><td class="num up">+5.33%</td></tr>
+<tr><td><strong>LG에너지솔루션</strong></td><td class="num">412,000</td><td class="num down">-2.14%</td><td class="num up">+3.39%</td><td class="num up">+11.65%</td></tr>
+<tr><td>에코프로</td><td class="num">146,400</td><td class="num down">-1.68%</td><td class="num up">+3.46%</td><td class="num down">-2.72%</td></tr>
+<tr><td>기아</td><td class="num">149,000</td><td class="num down">-1.00%</td><td class="num down">-0.80%</td><td class="num down">-9.31%</td></tr>
+<tr><td>셀트리온</td><td class="num">199,700</td><td class="num down">-0.89%</td><td class="num up">+2.25%</td><td class="num down">-2.82%</td></tr>
+<tr><td>SK텔레콤</td><td class="num">93,000</td><td class="num down">-0.85%</td><td class="num up">+14.96%</td><td class="num up">+24.00%</td></tr>
+</tbody>
+</table>
+
+<h2>🔍 섹터별 분석</h2>
+
+<h3>1️⃣ AI·반도체 부품 — 불꽃 랠리 🔥</h3>
+<ul>
+<li><strong>삼성전기 +9.5%</strong>: 단순 이슈 반등이 아님. <strong>20일 +41.07%, 5일 +23.9%</strong>로 명백한 추세 상승. AI 서버용 고적층 MLCC와 FC-BGA 수요 폭발이 실적으로 반영되는 국면. 종가 565,000원으로 20일 신고가(583,000원) 근접.</li>
+<li><strong>SK하이닉스 +2.91%</strong>: 5일 +17.24%, 20일 +12.86%. HBM 공급 부족·가격 인상 사이클 진행 중. 종가 1,027,000원으로 100만 원대 안착.</li>
+<li><strong>삼성전자 +0.98%</strong>: 등락률은 작지만 5일 +10.63%, 20일 +12.26%로 <strong>추세 회복 확인</strong>. 우선주(+1.96%)가 더 강하게 반응.</li>
+<li><strong>한미반도체 0.00%</strong>: 보합. 5일 +10% 강세 후 숨고르기.</li>
+</ul>
+<blockquote><strong>핵심</strong>: HBM·AI 서버 부품 사이클은 여전히 살아 있고, 부품주(삼성전기)로 매수세가 옮겨붙는 모습.</blockquote>
+
+<h3>2️⃣ 금융주 — 금리·실적 기대 동반 상승 💰</h3>
+<ul>
+<li>KB금융 +2.66%, 신한지주 +2.17%, 삼성생명 +1.96%</li>
+<li>5일 등락률이 모두 +6~9%대로 <strong>단기 강세 추세 명확</strong></li>
+<li>1분기 어닝시즌 진입 + 배당 매력 부각</li>
+</ul>
+
+<h3>3️⃣ 방산·중후장대 — 글로벌 수주 모멘텀 💥</h3>
+<ul>
+<li><strong>한화에어로스페이스 +3.86%</strong> (종가 150만 원 돌파). 폴란드·중동 수주 잔고와 K9·천궁 모멘텀 지속.</li>
+<li><strong>HMM +3.84%</strong>: 컨테이너 운임(SCFI) 반등 + 홍해 사태 장기화 기대</li>
+<li><strong>고려아연 +3.6%</strong>: 전기동·아연 가격 상승. 다만 20일은 -2.89%로 횡보 중.</li>
+</ul>
+
+<h3>4️⃣ 2차전지 — 명확한 약세 전환 ⚠️</h3>
+<ul>
+<li>LG에너지솔루션 -2.14%, 에코프로비엠 -2.18%, 에코프로 -1.68%, 알테오젠 -2.30%</li>
+<li>20일 기준으로는 LG엔솔 +11.65%, 에코프로비엠 +5.33%로 아직 <strong>고점권 차익 실현</strong> 성격</li>
+<li>자금이 <strong>2차전지 → AI 부품/금융</strong>으로 이동하는 흐름</li>
+</ul>
+
+<h3>5️⃣ 자동차 — 부진 지속 😐</h3>
+<ul>
+<li>현대차 0.00% (20일 -5.32%), 기아 -1.00% (20일 -9.31%)</li>
+<li>미국 관세 이슈 + 중국 EV 경쟁 격화 부담</li>
+</ul>
+
+<h2>📈 차트로 보는 기술적 분석</h2>
+<p>각 차트에는 <strong>이동평균선(MA5/20/60)</strong>, <strong>볼린저밴드(20,2)</strong>, <strong>지지/저항선</strong>, <strong>추세선</strong>, <strong>RSI(14)</strong>, <strong>MACD</strong>가 함께 그려져 있습니다.</p>
+
+<!-- 1. 삼성전기 -->
+<div class="chart-card">
+<h3>1. 삼성전기 (009150) — RSI 과열 진입, 볼린저 상단 돌파</h3>
+<img src="charts/삼성전기_일봉_분석_20260411_023550.png" alt="삼성전기 일봉 분석">
+<div class="indicator-grid">
+<div class="ind-item"><span class="ind-label">현재가</span><span class="ind-value">565,000</span></div>
+<div class="ind-item"><span class="ind-label">MA5 / 20 / 60</span><span class="ind-value">503K / 457K / 378K</span></div>
+<div class="ind-item"><span class="ind-label">RSI(14)</span><span class="ind-value">72.8 <span class="tag tag-warn">과매수</span></span></div>
+<div class="ind-item"><span class="ind-label">MACD</span><span class="ind-value">31,307 <span class="tag tag-good">골든</span></span></div>
+<div class="ind-item"><span class="ind-label">볼린저 위치</span><span class="ind-value">120.3% <span class="tag tag-warn">상단돌파</span></span></div>
+<div class="ind-item"><span class="ind-label">거래량</span><span class="ind-value">1.57x</span></div>
+<div class="ind-item"><span class="ind-label">60일 고가 대비</span><span class="ind-value">-3.09%</span></div>
+</div>
+<p><strong>차트 해석</strong>: <span class="tag tag-good">완벽한 정배열</span>(MA5 &gt; MA20 &gt; MA60). 차트 좌측의 횡보 박스(20만~25만원)를 지난 2월 강하게 돌파한 이후 한 번도 20일선을 깨지 않고 올라온 <strong>전형적인 상승 추세</strong>입니다. 다만 종가가 볼린저 상단(533,876)을 <strong>+5.8% 초과</strong>하며 통계적으로 보면 변동성 폭증 구간 — RSI 72.8까지 가세해 <strong>단기 과열 시그널</strong>이 명확합니다. 거래량은 20일 평균의 1.57배로 매수세가 살아 있지만, <strong>차익 실현 매물 출회 가능성</strong>이 높아 추격보다 눌림목 대기가 정석.</p>
+<p>📍 핵심 가격대: <strong>지지 502K(MA5)</strong> → 457K(MA20) → 433K(이전 박스 상단). <strong>저항 583K(60일 신고가)</strong>.</p>
+</div>
+
+<!-- 2. SK하이닉스 -->
+<div class="chart-card">
+<h3>2. SK하이닉스 (000660) — 가장 안정적인 정배열, 100만 원 안착</h3>
+<img src="charts/SK하이닉스_일봉_분석_20260411_023551.png" alt="SK하이닉스 일봉 분석">
+<div class="indicator-grid">
+<div class="ind-item"><span class="ind-label">현재가</span><span class="ind-value">1,027,000</span></div>
+<div class="ind-item"><span class="ind-label">MA5 / 20 / 60</span><span class="ind-value">972K / 946K / 896K</span></div>
+<div class="ind-item"><span class="ind-label">RSI(14)</span><span class="ind-value">57.1 <span class="tag tag-neutral">중립</span></span></div>
+<div class="ind-item"><span class="ind-label">MACD</span><span class="ind-value">13,652 <span class="tag tag-good">골든</span></span></div>
+<div class="ind-item"><span class="ind-label">볼린저 위치</span><span class="ind-value">78.7% <span class="tag tag-neutral">상단부</span></span></div>
+<div class="ind-item"><span class="ind-label">거래량</span><span class="ind-value">0.69x</span></div>
+<div class="ind-item"><span class="ind-label">60일 고가 대비</span><span class="ind-value">-6.55%</span></div>
+</div>
+<p><strong>차트 해석</strong>: 5종목 중 <strong>가장 건강한 추세</strong>. RSI 57.1로 과열 신호가 없고, MA5/20/60 모두 정배열을 유지한 채 <strong>완만한 우상향 추세선</strong>이 자리잡혔습니다. 볼린저밴드 상단(1,086,873)까지는 약 5.8%의 추가 여유가 있어 단기 매수세 유입 시 전고점(1,099,000) 돌파 시도가 충분히 가능합니다. 거래량은 0.69x로 다소 가벼운 편 — 본격적인 추세 가속에는 거래량 동반 확인이 필요합니다.</p>
+<p>📍 핵심 가격대: <strong>지지 972K(MA5)</strong> → 946K(MA20) → 896K(MA60, 강한 지지). <strong>저항 1,086K(BB 상단)</strong> → 1,099K(60일 신고가).</p>
+</div>
+
+<!-- 3. KB금융 -->
+<div class="chart-card">
+<h3>3. KB금융 (105560) — 볼린저 상단 근접, 단기 과열 직전</h3>
+<img src="charts/KB금융_일봉_분석_20260411_023551.png" alt="KB금융 일봉 분석">
+<div class="indicator-grid">
+<div class="ind-item"><span class="ind-label">현재가</span><span class="ind-value">158,300</span></div>
+<div class="ind-item"><span class="ind-label">MA5 / 20 / 60</span><span class="ind-value">152K / 150K / 148K</span></div>
+<div class="ind-item"><span class="ind-label">RSI(14)</span><span class="ind-value">64.4 <span class="tag tag-neutral">중립</span></span></div>
+<div class="ind-item"><span class="ind-label">MACD</span><span class="ind-value">797 <span class="tag tag-good">골든</span></span></div>
+<div class="ind-item"><span class="ind-label">볼린저 위치</span><span class="ind-value">95.6% <span class="tag tag-warn">상단근접</span></span></div>
+<div class="ind-item"><span class="ind-label">거래량</span><span class="ind-value">0.56x</span></div>
+<div class="ind-item"><span class="ind-label">60일 고가 대비</span><span class="ind-value">-8.23%</span></div>
+</div>
+<p><strong>차트 해석</strong>: 정배열은 유지하지만 MA5(152K)·MA20(150K)·MA60(148K)이 매우 <strong>좁은 간격으로 수렴</strong> — 이는 박스권 횡보 후 방향성 결정 직전 구간임을 시사합니다. 오늘 종가가 볼린저 상단(159,079)에 95.6%까지 근접해 단기 저항 테스트 중. MACD가 막 골든크로스를 발생시킨 점은 긍정적이나 거래량이 0.56x로 약해 <strong>강한 돌파보다는 박스 상단 횡보</strong> 가능성이 더 높음.</p>
+<p>📍 핵심 가격대: <strong>지지 152K(MA5)</strong> → 150K(MA20). <strong>저항 159K(BB 상단)</strong> → 172K(60일 고점).</p>
+</div>
+
+<!-- 4. 한화에어로스페이스 -->
+<div class="chart-card">
+<h3>4. 한화에어로스페이스 (012450) — 볼린저 상단 부근, 신고가 도전</h3>
+<img src="charts/한화에어로스페이스_일봉_분석_20260411_023552.png" alt="한화에어로스페이스 일봉 분석">
+<div class="indicator-grid">
+<div class="ind-item"><span class="ind-label">현재가</span><span class="ind-value">1,507,000</span></div>
+<div class="ind-item"><span class="ind-label">MA5 / 20 / 60</span><span class="ind-value">1,486K / 1,393K / 1,320K</span></div>
+<div class="ind-item"><span class="ind-label">RSI(14)</span><span class="ind-value">66.3 <span class="tag tag-neutral">중립</span></span></div>
+<div class="ind-item"><span class="ind-label">MACD</span><span class="ind-value">43,186 <span class="tag tag-good">골든</span></span></div>
+<div class="ind-item"><span class="ind-label">볼린저 위치</span><span class="ind-value">86.3% <span class="tag tag-neutral">상단부</span></span></div>
+<div class="ind-item"><span class="ind-label">거래량</span><span class="ind-value">0.88x</span></div>
+<div class="ind-item"><span class="ind-label">60일 고가 대비</span><span class="ind-value">-8.94%</span></div>
+</div>
+<p><strong>차트 해석</strong>: MA5/20/60 정배열, MACD 골든크로스 모두 <strong>상승 추세 유효</strong>를 가리킵니다. RSI 66.3은 과열 직전 단계로 추가 상승 여력이 남아 있고, 볼린저 상단(1,549,919)까지는 약 2.9% 여유. 다만 60일 고가(1,655,000)와는 약 9% 갭이 있어 <strong>이전 고점 회복까지의 여정</strong>이 남아 있습니다. 거래량 0.88x는 미지근한 수준 — 본격 상승 전환에는 거래량 동반이 필요.</p>
+<p>📍 핵심 가격대: <strong>지지 1,486K(MA5)</strong> → 1,393K(MA20). <strong>저항 1,549K(BB 상단)</strong> → 1,655K(60일 신고가).</p>
+</div>
+
+<!-- 5. LG에너지솔루션 -->
+<div class="chart-card">
+<h3>5. LG에너지솔루션 (373220) — MA20 vs MA60 데드크로스 위험</h3>
+<img src="charts/LG에너지솔루션_일봉_분석_20260411_023552.png" alt="LG에너지솔루션 일봉 분석">
+<div class="indicator-grid">
+<div class="ind-item"><span class="ind-label">현재가</span><span class="ind-value">412,000</span></div>
+<div class="ind-item"><span class="ind-label">MA5 / 20 / 60</span><span class="ind-value">412K / 394K / 395K</span></div>
+<div class="ind-item"><span class="ind-label">RSI(14)</span><span class="ind-value">68.2 <span class="tag tag-neutral">중립</span></span></div>
+<div class="ind-item"><span class="ind-label">MACD</span><span class="ind-value">7,067 <span class="tag tag-good">골든</span></span></div>
+<div class="ind-item"><span class="ind-label">볼린저 위치</span><span class="ind-value">76.3% <span class="tag tag-neutral">상단부</span></span></div>
+<div class="ind-item"><span class="ind-label">거래량</span><span class="ind-value">0.69x</span></div>
+<div class="ind-item"><span class="ind-label">60일 고가 대비</span><span class="ind-value">-9.45%</span></div>
+</div>
+<p><strong>차트 해석</strong>: <span class="tag tag-warn">유일하게 정배열이 깨진 종목</span>. MA20(393,625)이 MA60(395,025)을 살짝 하회 — 이는 <strong>중기 추세가 회복 중이지만 아직 완전한 정배열에 도달하지 못한 상태</strong>입니다. RSI 68.2는 과열 직전이고, 오늘 -2.14% 음봉으로 마감해 <strong>단기 차익 실현이 시작된 신호</strong>일 수 있습니다. MACD는 골든크로스 상태이지만, 거래량 0.69x에 음봉이라면 <strong>약한 매도 우위</strong>로 해석. MA20과 MA60 사이의 좁은 간격이 변곡점이 될 가능성.</p>
+<p>📍 핵심 가격대: <strong>지지 394K(MA20·MA60 클러스터)</strong> → 359K(BB 하단). <strong>저항 428K(BB 상단)</strong> → 455K(60일 고점).</p>
+</div>
+
+<h2>🎯 종목별 매매 전략</h2>
+
+<h3><span class="star">★★★★★</span> 삼성전기 — 추세 추종, 단 추격은 분할로</h3>
+<p><strong>20일 +41%의 폭등 종목</strong>. 강한 추세지만 단기 과열 구간. 565,000원에서 20일 고점 583,000원이 1차 저항.</p>
+<table>
+<tr><td>🟢 분할 매수</td><td class="num">530,000~545,000원 (조정 시)</td></tr>
+<tr><td>🎯 1차 목표</td><td class="num">600,000원</td></tr>
+<tr><td>🎯 2차 목표</td><td class="num">650,000원</td></tr>
+<tr><td>🔴 손절</td><td class="num">495,000원 (-7%, 20일선)</td></tr>
+</table>
+<blockquote><strong>주의</strong>: RSI 과열 구간 진입 가능성 高. 추격보다 <strong>눌림목 매수</strong>가 정석.</blockquote>
+
+<h3><span class="star">★★★★</span> SK하이닉스 — 100만 원 안착, 추세 유효</h3>
+<table>
+<tr><td>🟢 진입</td><td class="num">990,000~1,010,000원</td></tr>
+<tr><td>🎯 1차 목표</td><td class="num">1,080,000원 (전고점 돌파)</td></tr>
+<tr><td>🎯 2차 목표</td><td class="num">1,150,000원</td></tr>
+<tr><td>🔴 손절</td><td class="num">950,000원</td></tr>
+</table>
+
+<h3><span class="star">★★★★</span> KB금융 — 배당 + 실적 모멘텀</h3>
+<table>
+<tr><td>🟢 진입</td><td class="num">154,000~156,000원</td></tr>
+<tr><td>🎯 1차 목표</td><td class="num">165,000원</td></tr>
+<tr><td>🔴 손절</td><td class="num">145,000원</td></tr>
+</table>
+
+<h3><span class="star">★★★</span> 한화에어로스페이스 — 고가권, 신규 진입은 신중</h3>
+<p>20일 등락률 +1.28%로 박스권 상단. 150만 원 돌파 후 추가 모멘텀 확인 필요.</p>
+
+<h3><span class="star">★★</span> LG에너지솔루션 — 단기 조정 가능성, 관망</h3>
+<p>20일 +11.65%인데 오늘 -2.14%. <strong>단기 고점 형성 시그널</strong>. 400,000원 지지 확인 후 재진입 검토.</p>
+
+<h2>⚠️ 주의해야 할 종목</h2>
+<ul>
+<li><strong>한국전력</strong> (보합, 20일 -10.14%) — 요금 인상 무산 우려 + 원전 정책 불확실성. 20일 신저가 근접(39,650원).</li>
+<li><strong>NAVER</strong> (+0.25%, 20일 -9.42%) — 대형주 중 가장 부진. 광고 매출 둔화 우려.</li>
+<li><strong>삼성에스디에스</strong> (+0.27%, 20일 -7.58%) — 클라우드 부문 모멘텀 약화.</li>
+</ul>
+
+<h2>📝 다음 주 (4월 13일~) 체크포인트</h2>
+<ol>
+<li><strong>삼성전자 1Q 잠정실적</strong> — 4월 첫째 주 발표 후 본격적 가이던스 반영</li>
+<li><strong>미국 CPI / FOMC 의사록</strong> — 금리 경로 재확인</li>
+<li><strong>삼성전기·SK하이닉스 1Q 실적 발표</strong> — AI 사이클 검증</li>
+<li><strong>2차전지 반등 여부</strong> — LG엔솔 400,000원 지지 시 단기 매수 기회</li>
+<li><strong>방산·조선 수주 공시</strong> — 한화에어로 추가 모멘텀</li>
+</ol>
+
+<h2>💡 핵심 정리</h2>
+<div class="summary-box">
+<p>✅ <strong>강세 테마</strong>: AI 부품(삼성전기) &gt; HBM(SK하이닉스) &gt; 금융 &gt; 방산 &gt; 해운</p>
+<p>❌ <strong>약세 테마</strong>: 2차전지(에코프로 그룹·LG엔솔) &gt; 자동차 &gt; 통신</p>
+<p>🔄 <strong>자금 이동</strong>: 2차전지 → AI 부품 / 금융주</p>
+<p>🎯 <strong>최선호</strong>: 삼성전기(눌림목), SK하이닉스, KB금융</p>
+</div>
+
+<div class="meta">
+📂 <strong>데이터 소스</strong>: pykrx 실거래 데이터 (KRX, 2026-04-10 종가 기준)<br>
+📊 <strong>수집 종목</strong>: 30개 (KOSPI 대형주 + 인기 종목)<br>
+🤖 <strong>분석 작성</strong>: Claude Opus 4.6 (LLM API 미사용, Claude Code 환경에서 직접 작성)<br>
+⏰ <strong>작성 시각</strong>: 2026-04-11
+</div>
+
+<div class="disclaimer">
+⚠️ <strong>면책조항</strong>: 본 글은 투자 참고용이며, 특정 종목의 매수·매도를 권유하지 않습니다. 모든 투자 결정과 그에 따른 손익은 투자자 본인의 판단과 책임 하에 이루어져야 합니다. 과거 수익률이 미래 수익률을 보장하지 않습니다.
+</div>
+
+</div>
+</body>
+</html>
