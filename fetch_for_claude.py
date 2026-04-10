@@ -1,8 +1,8 @@
 """주요 종목 데이터 직접 수집 (pykrx 단일종목 API 사용)"""
 import sys, json
 sys.stdout.reconfigure(encoding='utf-8')
-from pykrx import stock
 from datetime import datetime, timedelta
+from utils import yf_provider as stock  # pykrx 대신 yfinance (글로벌 IP에서 작동)
 
 # 주요 종목 (대형주 + 인기 종목)
 TICKERS = {
@@ -48,10 +48,10 @@ print(f"🔍 환경 진단")
 print(f"  - 현재 시각(now): {end_dt}")
 print(f"  - 조회 범위: {start} ~ {end}")
 try:
-    import pykrx
-    print(f"  - pykrx 버전: {getattr(pykrx, '__version__', 'unknown')}")
+    import yfinance
+    print(f"  - yfinance 버전: {getattr(yfinance, '__version__', 'unknown')}")
 except Exception as e:
-    print(f"  - pykrx 임포트 실패: {e}")
+    print(f"  - yfinance 임포트 실패: {e}")
 
 # 네트워크 사전 점검 (KRX 단일 종목 1개)
 print(f"\n🧪 네트워크 사전 점검: 삼성전자(005930) 조회")

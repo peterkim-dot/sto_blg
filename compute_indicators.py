@@ -2,7 +2,7 @@
 import sys, json
 sys.stdout.reconfigure(encoding='utf-8')
 from datetime import datetime, timedelta
-from pykrx import stock
+from utils import yf_provider as stock
 import numpy as np
 
 TARGETS = [

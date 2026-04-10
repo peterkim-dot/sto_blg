@@ -2,7 +2,7 @@
 import sys, os
 sys.stdout.reconfigure(encoding='utf-8')
 from datetime import datetime, timedelta
-from pykrx import stock
+from utils import yf_provider as stock
 from utils.chart_generator import generate_analysis_chart
 
 # 거래일은 market_data.json에서 가져옴 (없으면 오늘)

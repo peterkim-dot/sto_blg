@@ -16,8 +16,10 @@ echo "PY=$PY"
 
 echo ""
 echo "==> 1/4 의존성 설치 (실패 시 즉시 중단)"
-$PY -m pip install --upgrade pip
-$PY -m pip install pykrx mplfinance pandas numpy feedparser beautifulsoup4 requests python-dotenv
+# pip 업그레이드는 시도하되 실패해도 진행 (debian 설치 환경 호환)
+$PY -m pip install --upgrade pip 2>&1 || echo "(pip upgrade 스킵)"
+# yfinance 사용 (pykrx는 한국 IP만 지원)
+$PY -m pip install yfinance mplfinance pandas numpy
 
 # 한글 폰트 (best-effort)
 if which apt-get >/dev/null 2>&1; then
@@ -26,7 +28,7 @@ fi
 
 echo ""
 echo "==> 설치 확인"
-$PY -c "import pykrx, mplfinance, pandas; print('pykrx:', pykrx.__version__ if hasattr(pykrx, '__version__') else 'ok'); print('mplfinance:', mplfinance.__version__); print('pandas:', pandas.__version__)"
+$PY -c "import yfinance, mplfinance, pandas; print('yfinance:', yfinance.__version__); print('mplfinance:', mplfinance.__version__); print('pandas:', pandas.__version__)"
 
 echo ""
 echo "==> 2/4 시장 데이터 수집"
