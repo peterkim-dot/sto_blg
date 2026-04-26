@@ -116,6 +116,41 @@ def post_to_blogger(blog_id, html_path, date_str=None, repo=DEFAULT_REPO,
     return result
 
 
+def update_post(blog_id, post_id, html_path, date_str=None, repo=DEFAULT_REPO,
+                branch=DEFAULT_BRANCH, labels=None):
+    """기존 포스트(임시저장 포함) 내용 갱신"""
+    html_file = Path(html_path)
+    if not html_file.exists():
+        sys.exit(f'❌ 파일 없음: {html_path}')
+    if date_str is None:
+        date_str = html_file.parent.name
+
+    html = html_file.read_text(encoding='utf-8')
+    html = transform_image_paths(html, date_str, repo, branch)
+    title = extract_title(html)
+    content = extract_body_with_style(html)
+
+    service = get_service()
+    body = {'title': title, 'content': content}
+    if labels:
+        body['labels'] = labels
+
+    print(f"\n♻️  포스트 업데이트 중...")
+    print(f"  Blog ID: {blog_id}")
+    print(f"  Post ID: {post_id}")
+    print(f"  제목: {title}")
+
+    result = service.posts().patch(
+        blogId=blog_id, postId=post_id, body=body,
+    ).execute()
+
+    print(f"\n✅ 업데이트 완료!")
+    print(f"   상태: {result.get('status', 'unknown')}")
+    if result.get('url'):
+        print(f"   URL: {result['url']}")
+    return result
+
+
 def main():
     p = argparse.ArgumentParser(description='Blogger 자동 포스팅')
     sub = p.add_subparsers(dest='command', required=True)
@@ -131,6 +166,15 @@ def main():
     p_post.add_argument('--draft', action='store_true', help='임시저장 (발행하지 않음)')
     p_post.add_argument('--labels', nargs='*', help='라벨 목록 (예: --labels 마감리뷰 주식)')
 
+    p_upd = sub.add_parser('update', help='기존 포스트 갱신')
+    p_upd.add_argument('--blog-id', required=True)
+    p_upd.add_argument('--post-id', required=True)
+    p_upd.add_argument('--html', required=True)
+    p_upd.add_argument('--date')
+    p_upd.add_argument('--repo', default=DEFAULT_REPO)
+    p_upd.add_argument('--branch', default=DEFAULT_BRANCH)
+    p_upd.add_argument('--labels', nargs='*')
+
     args = p.parse_args()
 
     if args.command == 'list':
@@ -139,6 +183,11 @@ def main():
         post_to_blogger(
             args.blog_id, args.html, args.date,
             args.repo, args.branch, args.draft, args.labels,
+        )
+    elif args.command == 'update':
+        update_post(
+            args.blog_id, args.post_id, args.html, args.date,
+            args.repo, args.branch, args.labels,
         )
 
 
