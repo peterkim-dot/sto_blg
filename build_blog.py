@@ -12,6 +12,10 @@ base = f'output/{date}'
 m = json.load(open(f'{base}/market_data.json', encoding='utf-8'))
 ind = json.load(open(f'{base}/indicators.json', encoding='utf-8'))
 sec = json.load(open(f'{base}/sector_data.json', encoding='utf-8'))['sectors']
+news_path = f'{base}/news_data.json'
+movers_news = {}
+if os.path.exists(news_path):
+    movers_news = json.load(open(news_path, encoding='utf-8')).get('movers_news', {})
 
 stocks = m['stocks']
 ups = [s for s in stocks if s['chg_pct'] > 0]
@@ -198,6 +202,18 @@ def mover_analysis(s, is_surge):
             else:
                 trend_text = f'5일 {c5:+.2f}%, 20일 {c20:+.2f}%'
 
+    # 뉴스 헤드라인 (있으면)
+    news_html = ''
+    nd = movers_news.get(s['name'])
+    if nd and nd.get('headlines'):
+        news_items = ''.join(
+            f'<li>{h["title"]}</li>'
+            for h in nd['headlines'][:2]
+        )
+        verb = '급등' if is_surge else '급락'
+        news_html = f'''<p><strong>📰 {verb} 배경 (최근 헤드라인)</strong></p>
+<ul style="font-size:13px;">{news_items}</ul>'''
+
     badge = '🚀' if is_surge else '🔻'
     return f'''<div class="chart-card">
 <h3>{badge} {s['name']} ({s['ticker']}) {s['chg_pct']:+.2f}%</h3>
@@ -215,6 +231,7 @@ def mover_analysis(s, is_surge):
 <li><strong>거래량</strong>: {vol_text}</li>
 <li><strong>가격 위치</strong>: {pos_text}</li>
 </ul>
+{news_html}
 </div>'''
 
 surge_blocks = '\n'.join(mover_analysis(s, True) for s in stocks[:3])

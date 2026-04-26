@@ -1,9 +1,22 @@
-"""특정 거래일 기준으로 데이터/지표/차트/섹터 일괄 생성"""
+"""특정 거래일 기준으로 데이터/지표/차트/섹터/뉴스 일괄 생성"""
 import sys, os, json
 sys.stdout.reconfigure(encoding='utf-8')
+import feedparser
+from urllib.parse import quote
 from pykrx import stock
 from datetime import datetime, timedelta
 from utils.chart_generator import generate_analysis_chart
+
+
+def get_news(query, count=3):
+    """Google News RSS에서 한국어 뉴스 헤드라인"""
+    url = f'https://news.google.com/rss/search?q={quote(query)}&hl=ko&gl=KR&ceid=KR:ko'
+    try:
+        feed = feedparser.parse(url)
+        return [{'title': e.title, 'link': e.link, 'published': e.get('published', '')}
+                for e in feed.entries[:count]]
+    except Exception:
+        return []
 
 if len(sys.argv) < 2:
     sys.exit('Usage: gen_for_date.py YYYYMMDD')
@@ -151,6 +164,18 @@ for sec, stocks in sectors.items():
 sec_list.sort(key=lambda x: x['평균등락률'], reverse=True)
 with open(f'output/{day_dir}/sector_data.json', 'w', encoding='utf-8') as f:
     json.dump({'trade_date':trade_date,'sectors':sec_list}, f, ensure_ascii=False, indent=2)
+
+# 4. 급등주·급락주 뉴스 (TOP3 + BOTTOM3)
+print('== 급등/급락 종목 뉴스 수집 ==')
+movers_news = {}
+for s in results[:3] + results[-3:]:
+    headlines = get_news(s['name'], 3)
+    movers_news[s['name']] = {
+        'ticker': s['ticker'], 'chg_pct': s['chg_pct'], 'headlines': headlines,
+    }
+    print(f'  {s["name"]} ({s["chg_pct"]:+.2f}%): {len(headlines)}건')
+with open(f'output/{day_dir}/news_data.json', 'w', encoding='utf-8') as f:
+    json.dump({'trade_date': trade_date, 'movers_news': movers_news}, f, ensure_ascii=False, indent=2)
 
 print(f'\n✅ {day_dir} 데이터 일괄 생성 완료')
 print(f'  → output/{day_dir}/market_data.json, indicators.json, sector_data.json, charts/')
