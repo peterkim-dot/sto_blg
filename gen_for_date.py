@@ -37,6 +37,34 @@ for ticker, name in TICKERS.items():
     chg = (last['종가'] - prev['종가']) / prev['종가'] * 100
     chg_5d = ((last['종가'] - df.iloc[-6]['종가']) / df.iloc[-6]['종가'] * 100) if len(df) >= 6 else None
     chg_20d = ((last['종가'] - df.iloc[-21]['종가']) / df.iloc[-21]['종가'] * 100) if len(df) >= 21 else None
+
+    # 추가 지표 (30종목 전체에 RSI/MA/BB/거래량 비율)
+    c = df['종가']
+    rsi = None
+    if len(df) >= 15:
+        d2 = c.diff()
+        g = d2.where(d2 > 0, 0).rolling(14).mean()
+        lo = (-d2.where(d2 < 0, 0)).rolling(14).mean()
+        rs = g / lo
+        rsi_val = (100 - (100 / (1 + rs))).iloc[-1]
+        if rsi_val == rsi_val:  # not NaN
+            rsi = round(float(rsi_val), 1)
+    ma5 = ma20 = bb_pct = None
+    if len(df) >= 20:
+        ma5 = int(c.rolling(5).mean().iloc[-1])
+        ma20_val = c.rolling(20).mean().iloc[-1]
+        ma20 = int(ma20_val)
+        bb_std = c.rolling(20).std().iloc[-1]
+        bb_up = ma20_val + 2 * bb_std
+        bb_lo = ma20_val - 2 * bb_std
+        if bb_up > bb_lo:
+            bb_pct = round(float((c.iloc[-1] - bb_lo) / (bb_up - bb_lo) * 100), 1)
+    vol_ratio = None
+    if len(df) >= 20:
+        v_avg = df['거래량'].rolling(20).mean().iloc[-1]
+        if v_avg > 0:
+            vol_ratio = round(float(df['거래량'].iloc[-1] / v_avg), 2)
+
     results.append({
         'ticker': ticker, 'name': name, 'date': str(df.index[-1].date()),
         'close': int(last['종가']), 'open': int(last['시가']),
@@ -47,6 +75,8 @@ for ticker, name in TICKERS.items():
         'chg_20d': round(chg_20d, 2) if chg_20d is not None else None,
         'high_20d': int(df['고가'].tail(20).max()),
         'low_20d': int(df['저가'].tail(20).min()),
+        'rsi': rsi, 'ma5': ma5, 'ma20': ma20,
+        'bb_pct': bb_pct, 'vol_ratio': vol_ratio,
     })
 results.sort(key=lambda x: x['chg_pct'], reverse=True)
 trade_date = results[0]['date'] if results else None

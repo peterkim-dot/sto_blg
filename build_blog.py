@@ -22,9 +22,9 @@ top_down = stocks[-min(10, len(downs)):][::-1]
 # 차트 파일명 매핑
 charts = {}
 for name in ['삼성전기', 'SK하이닉스', 'KB금융', '한화에어로스페이스', 'LG에너지솔루션']:
-    files = glob.glob(f'{base}/charts/{name}_일봉_분석_*.png')
+    files = sorted(glob.glob(f'{base}/charts/{name}_일봉_분석_*.png'))
     if files:
-        charts[name] = os.path.basename(files[0])
+        charts[name] = os.path.basename(files[-1])  # 가장 최신 timestamp
 
 def fmt(v): return f'{v:+.2f}%' if v is not None else 'N/A'
 def cls(v): return 'up' if v and v > 0 else ('down' if v and v < 0 else 'neutral')
@@ -122,6 +122,104 @@ sec_rows = ''.join(f'<tr><td>{i+1}</td><td>{x["섹터"]}</td><td class="num {cls
 
 chart_blocks = '\n'.join(chart_block(n, ind[n], charts.get(n, '')) for n in ['삼성전기', 'SK하이닉스', 'KB금융', '한화에어로스페이스', 'LG에너지솔루션'] if n in ind)
 
+# 급등주·급락주 분석 (TOP 3 + BOTTOM 3)
+def mover_analysis(s, is_surge):
+    rsi = s.get('rsi')
+    bb = s.get('bb_pct')
+    vol = s.get('vol_ratio')
+    ma5 = s.get('ma5')
+    high_20 = s.get('high_20d', 0)
+    low_20 = s.get('low_20d', 0)
+    close = s['close']
+
+    # RSI 태그
+    rsi_tag = ''
+    rsi_text = ''
+    if rsi is not None:
+        if rsi > 85:
+            rsi_tag = '<span class="tag tag-warn">극과매수</span>'
+            rsi_text = f'RSI {rsi}로 극심한 과매수 — 추가 상승보다 단기 조정 가능성 우세'
+        elif rsi > 70:
+            rsi_tag = '<span class="tag tag-warn">과매수</span>'
+            rsi_text = f'RSI {rsi}로 과매수 영역. 추격보다 눌림목 대기'
+        elif rsi < 30:
+            rsi_tag = '<span class="tag tag-bad">과매도</span>'
+            rsi_text = f'RSI {rsi}로 과매도 영역. 반발 매수 시점 노릴 수 있음'
+        else:
+            rsi_tag = '<span class="tag tag-neutral">중립</span>'
+            rsi_text = f'RSI {rsi} 중립 구간'
+
+    # 거래량
+    vol_text = ''
+    if vol is not None:
+        if vol > 2:
+            vol_text = f'거래량 평균 대비 <strong>{vol}x</strong>로 폭증 — 강한 매수/매도 압력'
+        elif vol > 1.3:
+            vol_text = f'거래량 평균 대비 {vol}x로 활발'
+        elif vol < 0.7:
+            vol_text = f'거래량 평균 대비 {vol}x로 다소 약함'
+        else:
+            vol_text = f'거래량 평균 대비 {vol}x 정상 수준'
+
+    # 가격 위치
+    pos_text = ''
+    if high_20 > 0:
+        from_high = (close - high_20) / high_20 * 100
+        from_low = (close - low_20) / low_20 * 100
+        if abs(from_high) < 1:
+            pos_text = f'<strong>20일 신고가 근접</strong> (고가 {high_20:,}원 대비 {from_high:+.2f}%)'
+        elif from_high > -3:
+            pos_text = f'20일 고점({high_20:,}원) 근처 (대비 {from_high:+.2f}%)'
+        elif from_low < 3:
+            pos_text = f'<strong>20일 저점 근접</strong> (저가 {low_20:,}원 대비 {from_low:+.2f}%)'
+        else:
+            pos_text = f'20일 박스({low_20:,}~{high_20:,}원) 내 거래'
+
+    # 추세 (5일/20일)
+    trend_text = ''
+    c5 = s.get('chg_5d'); c20 = s.get('chg_20d')
+    if c5 is not None and c20 is not None:
+        if is_surge:
+            if c5 > 10 and c20 > 20:
+                trend_text = f'5일 +{c5:.2f}%, 20일 +{c20:.2f}%로 <strong>강한 추세 상승</strong> 진행 중'
+            elif c5 > 0 and c20 > 0:
+                trend_text = f'5일 {c5:+.2f}%, 20일 {c20:+.2f}%로 누적 상승 추세 유효'
+            elif c5 > 0 and c20 < 0:
+                trend_text = f'중기는 약세였으나 5일 +{c5:.2f}%로 단기 반등 시작'
+            else:
+                trend_text = f'5일 {c5:+.2f}%, 20일 {c20:+.2f}%로 단발성 반등 가능성'
+        else:
+            if c5 < -5 and c20 < -10:
+                trend_text = f'5일 {c5:+.2f}%, 20일 {c20:+.2f}%로 <strong>추세적 하락</strong>'
+            elif c5 > 0 and c20 > 0:
+                trend_text = f'5일 +{c5:.2f}%, 20일 +{c20:.2f}%로 누적 상승 후 차익 실현 성격'
+            elif c5 < 0 and c20 < 0:
+                trend_text = f'5일 {c5:+.2f}%, 20일 {c20:+.2f}%로 약세 지속'
+            else:
+                trend_text = f'5일 {c5:+.2f}%, 20일 {c20:+.2f}%'
+
+    badge = '🚀' if is_surge else '🔻'
+    return f'''<div class="chart-card">
+<h3>{badge} {s['name']} ({s['ticker']}) {s['chg_pct']:+.2f}%</h3>
+<div class="indicator-grid">
+<div class="ind-item"><span class="ind-label">종가</span><span class="ind-value">{s['close']:,}</span></div>
+<div class="ind-item"><span class="ind-label">시가/고가/저가</span><span class="ind-value">{s['open']:,} / {s['high']:,} / {s['low']:,}</span></div>
+<div class="ind-item"><span class="ind-label">RSI(14)</span><span class="ind-value">{rsi if rsi else "-"} {rsi_tag}</span></div>
+<div class="ind-item"><span class="ind-label">볼린저 위치</span><span class="ind-value">{bb if bb else "-"}{"%" if bb else ""}</span></div>
+<div class="ind-item"><span class="ind-label">거래량 배수</span><span class="ind-value">{vol if vol else "-"}{"x" if vol else ""}</span></div>
+<div class="ind-item"><span class="ind-label">5일 / 20일</span><span class="ind-value"><span class="{cls(c5)}">{fmt(c5)}</span> / <span class="{cls(c20)}">{fmt(c20)}</span></span></div>
+</div>
+<ul>
+<li><strong>추세</strong>: {trend_text}</li>
+<li><strong>모멘텀</strong>: {rsi_text}</li>
+<li><strong>거래량</strong>: {vol_text}</li>
+<li><strong>가격 위치</strong>: {pos_text}</li>
+</ul>
+</div>'''
+
+surge_blocks = '\n'.join(mover_analysis(s, True) for s in stocks[:3])
+decline_blocks = '\n'.join(mover_analysis(s, False) for s in stocks[-3:][::-1])
+
 # 섹터 강세 텍스트
 strong_text = ''
 for s in strong_secs[:3]:
@@ -176,6 +274,12 @@ html = f'''<!DOCTYPE html>
 
 <h3>약세 섹터 TOP 3</h3>
 {weak_text or '<p>약세 섹터 없음 (대부분 상승 마감)</p>'}
+
+<h2>🚀 오늘의 급등주 TOP 3 상세 분석</h2>
+{surge_blocks}
+
+<h2>🔻 오늘의 급락주 TOP 3 상세 분석</h2>
+{decline_blocks}
 
 <h2>📈 차트로 보는 기술적 분석 (5종목)</h2>
 {chart_blocks}
