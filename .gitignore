@@ -5,3 +5,8 @@ __pycache__/
 # output/ 는 원격 트리거가 결과를 커밋해야 하므로 포함시킴
 market_data.json
 indicators.json
+sector_data.json
+news_data.json
+# Blogger OAuth 비밀 파일
+credentials.json
+token.json
