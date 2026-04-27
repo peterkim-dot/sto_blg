@@ -167,7 +167,7 @@ def mover_analysis(s, is_surge):
 
     # 가격 위치
     pos_text = ''
-    if high_20 > 0:
+    if high_20 > 0 and low_20 > 0:
         from_high = (close - high_20) / high_20 * 100
         from_low = (close - low_20) / low_20 * 100
         if abs(from_high) < 1:
